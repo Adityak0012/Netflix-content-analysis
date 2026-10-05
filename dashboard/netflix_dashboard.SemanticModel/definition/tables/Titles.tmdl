@@ -1,0 +1,280 @@
+table Titles
+	lineageTag: cf8b33ef-e7b2-4962-8eae-457b8f42c35f
+
+	column show_id
+		dataType: string
+		lineageTag: aece443a-d375-4be3-a062-9aa0ae13b2cd
+		summarizeBy: none
+		sourceColumn: show_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 6f387195-3434-4734-b053-34b7ad3bed51
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: f4a83473-213b-4eb0-9fca-102079683f6d
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column director
+		dataType: string
+		lineageTag: 0aa9f026-a7d9-4008-b069-92f5a619c704
+		summarizeBy: none
+		sourceColumn: director
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: db8d5547-c3b6-4b74-af3e-e6a2a131c54c
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_added
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 10a85830-b85e-4bb1-b581-29b711dff8f5
+		summarizeBy: none
+		sourceColumn: date_added
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_year
+		dataType: int64
+		formatString: 0
+		lineageTag: f11b9bb7-a8fb-4bda-872d-933a2a21aa27
+		summarizeBy: none
+		sourceColumn: release_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column rating
+		dataType: string
+		lineageTag: 4fe91ce9-1a4c-4a02-b0f4-44cfd2170a75
+		summarizeBy: none
+		sourceColumn: rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration
+		dataType: string
+		lineageTag: f1b8bda4-d441-4c07-89b9-bb4106a05e8f
+		summarizeBy: none
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column listed_in
+		dataType: string
+		lineageTag: bc2c380c-9344-4e68-8abd-51b5f57c32cb
+		summarizeBy: none
+		sourceColumn: listed_in
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: bca77a46-6335-4ccc-8d33-cad957ff35fc
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_added
+		dataType: int64
+		formatString: 0
+		lineageTag: 65b949f1-b2a9-4245-b5a2-74631df9f42d
+		summarizeBy: none
+		sourceColumn: year_added
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_added
+		dataType: string
+		lineageTag: 2b7590d8-af1a-490b-8d79-f8687f5343ca
+		summarizeBy: none
+		sourceColumn: month_added
+		sortByColumn: month_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_num
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f71b86b8-57b3-4a48-9561-b3f934baa00a
+		summarizeBy: none
+		sourceColumn: month_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column movie_minutes
+		dataType: double
+		formatString: 0
+		lineageTag: 73d8334d-e038-4579-97e6-9ad602b6e48c
+		summarizeBy: none
+		sourceColumn: movie_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column tv_seasons
+		dataType: int64
+		formatString: 0
+		lineageTag: e5de2d99-62a4-4085-b579-25ba08b0e1f8
+		summarizeBy: none
+		sourceColumn: tv_seasons
+
+		annotation SummarizationSetBy = Automatic
+
+	column audience
+		dataType: string
+		lineageTag: 8c1174c8-a3db-40d0-be67-c942b0267b77
+		summarizeBy: none
+		sourceColumn: audience
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_country
+		dataType: string
+		lineageTag: f52f9806-aaab-4f9e-a154-6b1cee78e0a4
+		summarizeBy: none
+		sourceColumn: primary_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column primary_genre
+		dataType: string
+		lineageTag: f594adf4-613e-48e3-a1f9-a6cbaa5623e7
+		summarizeBy: none
+		sourceColumn: primary_genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column genre_count
+		dataType: int64
+		formatString: 0
+		lineageTag: e6931888-ea81-4f6f-b0e8-90b5a7b2a558
+		summarizeBy: none
+		sourceColumn: genre_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column years_to_netflix
+		dataType: int64
+		formatString: 0
+		lineageTag: 96126621-fe8c-4f83-935d-7450b24dff5c
+		summarizeBy: none
+		sourceColumn: years_to_netflix
+
+		annotation SummarizationSetBy = Automatic
+
+	column decade
+		dataType: string
+		lineageTag: 1bf01036-3d17-44c5-891c-b48dc9dad1d4
+		summarizeBy: none
+		sourceColumn: decade
+		sortByColumn: decade_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column decade_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 67fc39f4-7f2b-474f-a0e7-ac42ba69d0ea
+		summarizeBy: none
+		sourceColumn: decade_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column length_band
+		dataType: string
+		lineageTag: 7f657117-22bb-4377-878a-680253476f04
+		summarizeBy: none
+		sourceColumn: length_band
+		sortByColumn: length_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column length_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9058bed5-044a-480e-b18d-3b455e2c2160
+		summarizeBy: none
+		sourceColumn: length_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column season_band
+		dataType: string
+		lineageTag: d9f97577-8939-450c-b9f1-fbafad6116be
+		summarizeBy: none
+		sourceColumn: season_band
+		sortByColumn: season_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column season_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 16233357-a2ff-4ddb-8221-5e08ada5b44c
+		summarizeBy: none
+		sourceColumn: season_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column gap_band
+		dataType: string
+		lineageTag: 82f86466-3082-4cd4-a343-701e5405308b
+		summarizeBy: none
+		sourceColumn: gap_band
+		sortByColumn: gap_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column gap_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 206a0bd9-8a4d-4885-a46b-ff2536750c84
+		summarizeBy: none
+		sourceColumn: gap_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Titles = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\dell\Documents\netflix-content-analysis\data\processed\netflix_clean.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Keep = Table.SelectColumns(Headers, {"show_id", "type", "title", "director", "country", "date_added", "release_year", "rating", "duration", "listed_in", "description", "year_added", "month_added", "movie_minutes", "tv_seasons", "audience", "primary_country", "primary_genre", "genre_count", "years_to_netflix"}),
+				    Typed = Table.TransformColumnTypes(Keep, {{"show_id", type text}, {"type", type text}, {"title", type text}, {"director", type text}, {"country", type text}, {"date_added", type date}, {"release_year", Int64.Type}, {"rating", type text}, {"duration", type text}, {"listed_in", type text}, {"description", type text}, {"year_added", type number}, {"month_added", type text}, {"movie_minutes", type number}, {"tv_seasons", type number}, {"audience", type text}, {"primary_country", type text}, {"primary_genre", type text}, {"genre_count", Int64.Type}, {"years_to_netflix", type number}}, "en-US"),
+				    Ints = Table.TransformColumnTypes(Typed, {{"year_added", Int64.Type}, {"tv_seasons", Int64.Type}, {"years_to_netflix", Int64.Type}}),
+				    AddMonth = Table.AddColumn(Ints, "month_num", each if [date_added] = null then null else Date.Month([date_added]), Int64.Type),
+				    AddDecade = Table.AddColumn(AddMonth, "decade_order", each Number.RoundDown([release_year] / 10) * 10, Int64.Type),
+				    AddDecadeLabel = Table.AddColumn(AddDecade, "decade", each Text.From([decade_order]) & "s", type text),
+				    AddLen = Table.AddColumn(AddDecadeLabel, "length_band", each let m = [movie_minutes] in if m = null then null else if m < 60 then "Under 60" else if m < 90 then "60-89" else if m < 120 then "90-119" else if m < 150 then "120-149" else "150+", type text),
+				    AddLenOrd = Table.AddColumn(AddLen, "length_order", each let m = [movie_minutes] in if m = null then null else if m < 60 then 1 else if m < 90 then 2 else if m < 120 then 3 else if m < 150 then 4 else 5, Int64.Type),
+				    AddSeason = Table.AddColumn(AddLenOrd, "season_band", each let s = [tv_seasons] in if s = null then null else if s >= 5 then "5+" else Text.From(s), type text),
+				    AddSeasonOrd = Table.AddColumn(AddSeason, "season_order", each let s = [tv_seasons] in if s = null then null else if s >= 5 then 5 else s, Int64.Type),
+				    AddGap = Table.AddColumn(AddSeasonOrd, "gap_band", each let g = [years_to_netflix] in if g = null then null else if g = 0 then "Same year" else if g = 1 then "1 year" else if g <= 4 then "2-4 years" else if g <= 9 then "5-9 years" else "10+ years", type text),
+				    AddGapOrd = Table.AddColumn(AddGap, "gap_order", each let g = [years_to_netflix] in if g = null then null else if g = 0 then 1 else if g = 1 then 2 else if g <= 4 then 3 else if g <= 9 then 4 else 5, Int64.Type)
+				in
+				    AddGapOrd
+
+	annotation PBI_ResultType = Table
+

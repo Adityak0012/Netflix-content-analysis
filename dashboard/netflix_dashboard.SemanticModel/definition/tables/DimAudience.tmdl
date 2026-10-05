@@ -1,0 +1,32 @@
+table DimAudience
+	lineageTag: 326ef27f-2e88-48d3-aef8-72ebe91391c8
+
+	column audience
+		dataType: string
+		lineageTag: 56cb8f47-7e05-43b2-9341-e664963b9301
+		summarizeBy: none
+		sourceColumn: audience
+		sortByColumn: audience_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column audience_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 41a6dcb2-384d-45de-9935-d0ab95279b42
+		summarizeBy: none
+		sourceColumn: audience_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimAudience = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [audience = text, audience_order = Int64.Type], {{"Kids", 1}, {"Older Kids", 2}, {"Teens", 3}, {"Adults", 4}, {"Not Rated", 5}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,39 @@
+table TitleGenres
+	lineageTag: c17f31b7-b5c1-4915-acb9-da465d6ce9b4
+
+	column show_id
+		dataType: string
+		lineageTag: e7feb53d-48dd-4233-afbe-e02c11ba8eaf
+		summarizeBy: none
+		sourceColumn: show_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 6d260ccc-73dc-423c-837d-e2ba7982ca36
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column genre
+		dataType: string
+		lineageTag: e46438ef-986f-4055-977f-a9bd05f3fedb
+		summarizeBy: none
+		sourceColumn: genre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TitleGenres = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\dell\Documents\netflix-content-analysis\data\processed\netflix_genres.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"show_id", type text}, {"type", type text}, {"genre", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

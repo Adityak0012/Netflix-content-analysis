@@ -1,0 +1,104 @@
+table _Measures
+	lineageTag: 3d33a285-61ce-4a16-874d-9830a8a76f00
+
+	measure 'Total Titles' = COUNTROWS ( Titles )
+		formatString: #,0
+		lineageTag: fc9be612-ba2a-40cd-a18f-97b7c3355aa6
+
+	measure Movies = CALCULATE ( [Total Titles], Titles[type] = "Movie" )
+		formatString: #,0
+		lineageTag: e52764a1-8545-4964-b3c8-122b1ac459a9
+
+	measure 'TV Shows' = CALCULATE ( [Total Titles], Titles[type] = "TV Show" )
+		formatString: #,0
+		lineageTag: 0c65761f-64a2-4073-9e08-8b9fec87736e
+
+	measure 'TV Share %' = DIVIDE ( [TV Shows] + 0, [Total Titles] )
+		formatString: 0.0%
+		lineageTag: cb25d212-e571-4ccb-84fb-846e00a17d1f
+
+	measure 'Movie Share %' = DIVIDE ( [Movies] + 0, [Total Titles] )
+		formatString: 0.0%
+		lineageTag: 1831d485-2c5d-43db-a798-b39f2adc9f28
+
+	measure 'Titles Added' = IF ( ISBLANK ( SELECTEDVALUE ( Titles[year_added] ) ) && ISFILTERED ( Titles[year_added] ), BLANK (), [Total Titles] )
+		formatString: #,0
+		lineageTag: 8a5234dd-c84b-4f31-925c-173803d17da7
+
+	measure Countries = CALCULATE ( DISTINCTCOUNT ( TitleCountries[country_name] ), TitleCountries[country_name] <> "Unknown" )
+		formatString: #,0
+		lineageTag: e7557f8a-d305-4a6a-9894-033e9c416b94
+
+	measure Genres = DISTINCTCOUNT ( TitleGenres[genre] )
+		formatString: #,0
+		lineageTag: 692b8c2f-9e3a-43cb-8742-ac331f8ed62e
+
+	measure 'Avg Genres per Title' = AVERAGE ( Titles[genre_count] )
+		formatString: 0.0
+		lineageTag: ff8f6991-4885-4ed6-a482-dbcc61c6f1a8
+
+	measure 'Titles (Known Country)' = IF ( SELECTEDVALUE ( TitleCountries[country_name] ) = "Unknown", BLANK (), [Total Titles] )
+		formatString: #,0
+		lineageTag: 85e27322-59af-482c-bdd8-48dc6adffacc
+
+	measure 'TV Share % (100+ titles)' = IF ( [Total Titles] >= 100 && SELECTEDVALUE ( TitleCountries[country_name] ) <> "Unknown", [TV Share %] )
+		formatString: 0.0%
+		lineageTag: d290e857-234c-4fae-9412-755fa5da05d0
+
+	measure 'Median Movie Minutes' = MEDIAN ( Titles[movie_minutes] )
+		formatString: 0
+		lineageTag: 63cf1c62-260b-4952-bc2b-1739f9781bb4
+
+	measure 'Avg Seasons' = AVERAGE ( Titles[tv_seasons] )
+		formatString: 0.0
+		lineageTag: 3f284005-1330-4a37-9c4e-2c060ec22822
+
+	measure 'One-Season Share %' = DIVIDE ( CALCULATE ( [Total Titles], Titles[tv_seasons] = 1 ), [TV Shows] )
+		formatString: 0.0%
+		lineageTag: 695927ee-48a4-4588-abe4-0974382d1fad
+
+	measure 'Adult Share %' = DIVIDE ( CALCULATE ( [Total Titles], Titles[audience] = "Adults" ), [Total Titles] )
+		formatString: 0.0%
+		lineageTag: 74c598e0-399f-42fd-9e2a-dd53cd4b7deb
+
+	measure 'Kids Share %' = DIVIDE ( CALCULATE ( [Total Titles], Titles[audience] = "Kids" ), [Total Titles] )
+		formatString: 0.0%
+		lineageTag: d2652e3c-f936-45db-b11a-37ec4a942479
+
+	measure 'Same-Year Share %' = DIVIDE ( CALCULATE ( [Total Titles], Titles[years_to_netflix] = 0 ), CALCULATE ( [Total Titles], NOT ISBLANK ( Titles[years_to_netflix] ) ) )
+		formatString: 0.0%
+		lineageTag: ba9922c1-5a7a-4a9d-8a6c-d9cb9c3c7842
+
+	measure 'Median Years to Netflix' = MEDIAN ( Titles[years_to_netflix] )
+		formatString: 0
+		lineageTag: 7f4be48e-469d-4f1d-b92a-e2b7aa3fd0ca
+
+	measure 'Titles (Dated)' = CALCULATE ( [Total Titles], NOT ISBLANK ( Titles[date_added] ) )
+		formatString: #,0
+		lineageTag: efcbfe0c-25d1-4e38-bec6-857f929cd9c1
+
+	measure 'Titles (With Gap)' = CALCULATE ( [Total Titles], NOT ISBLANK ( Titles[years_to_netflix] ) )
+		formatString: #,0
+		lineageTag: 637f3c7c-ecc9-4d2e-bcfe-72e6e373924f
+
+	measure 'TV Share % (50+ added)' = IF ( [Total Titles] >= 50, [TV Share %] )
+		formatString: 0.0%
+		lineageTag: 8d562a7f-6a69-4673-a2ed-dde0019ef910
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: 46308cdd-b02e-4277-b5ce-5651fa5382ee
+		summarizeBy: none
+		sourceColumn: Column1
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Column1 = text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

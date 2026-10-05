@@ -1,0 +1,14 @@
+relationship d22d6f0f-11eb-4ef8-a034-f0b1aecddb2e
+	crossFilteringBehavior: bothDirections
+	fromColumn: TitleGenres.show_id
+	toColumn: Titles.show_id
+
+relationship f098cacf-c32a-4e0d-bd8e-16182f0a701a
+	crossFilteringBehavior: bothDirections
+	fromColumn: TitleCountries.show_id
+	toColumn: Titles.show_id
+
+relationship ccf93048-a3d0-478a-bbe0-0e4167511fc6
+	fromColumn: Titles.audience
+	toColumn: DimAudience.audience
+

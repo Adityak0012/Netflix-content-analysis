@@ -1,10 +1,10 @@
 # Netflix Content Analysis
 
-**What does Netflix offer, and how has its catalogue changed?** An exploratory analysis of 8,807 Netflix movies and TV shows using Python.
+**What does Netflix offer, and how has its catalogue changed?** An exploratory analysis of 8,807 Netflix movies and TV shows using Python, with a 6-page interactive Power BI dashboard.
 
-**Tools:** Python (pandas, NumPy, Matplotlib, SciPy) · Jupyter
+**Tools:** Python (pandas, NumPy, Matplotlib, SciPy) · Jupyter · Power BI (DAX, Power Query)
 
-![Titles added per year](images/01_titles_added_per_year.png)
+![Dashboard overview](images/dashboard/01_overview.png)
 
 ---
 
@@ -42,7 +42,36 @@
 ### 2. Exploratory analysis: [`notebooks/02_eda.ipynb`](notebooks/02_eda.ipynb)
 Six questions, each answered with a chart and a written finding, plus a Mann-Whitney U test to check whether newer movies are really shorter.
 
-## Charts
+### 3. Power BI dashboard: [`dashboard/netflix_dashboard.pbip`](dashboard)
+A data model with a `Titles` fact table, genre and country bridge tables (one title can have several of each, so they filter in both directions) and an audience lookup table, plus 21 DAX measures, for example:
+
+```DAX
+TV Share % = DIVIDE ( [TV Shows] + 0, [Total Titles] )
+
+Same-Year Share % =
+DIVIDE (
+    CALCULATE ( [Total Titles], Titles[years_to_netflix] = 0 ),
+    CALCULATE ( [Total Titles], NOT ISBLANK ( Titles[years_to_netflix] ) )
+)
+```
+
+| Page | Question it answers |
+|---|---|
+| Overview | What does Netflix offer? |
+| Growth & Timing | How fast did the catalogue grow, and how quickly does content arrive? |
+| Genres | Which genres dominate, for movies and TV? |
+| Countries | Where does content come from, and what kind? |
+| Audience & Duration | Who is it for, and how long are movies and series? |
+| Key Insights | Six findings and notes on the data |
+
+Every page has slicers for type, audience, year added, genre, country and rating. A PDF of all pages is in [`dashboard/netflix_dashboard.pdf`](dashboard/netflix_dashboard.pdf).
+
+| | |
+|---|---|
+| ![Growth](images/dashboard/02_growth_timing.png) | ![Genres](images/dashboard/03_genres.png) |
+| ![Countries](images/dashboard/04_countries.png) | ![Audience](images/dashboard/05_audience_duration.png) |
+
+## Charts (Python)
 
 | | |
 |---|---|
@@ -67,7 +96,12 @@ netflix-content-analysis/
 ├── notebooks/
 │   ├── 01_data_cleaning.ipynb
 │   └── 02_eda.ipynb
-├── images/               charts used in this README
+├── dashboard/
+│   ├── netflix_dashboard.pbip            open in Power BI Desktop
+│   ├── netflix_dashboard.Report/         report pages
+│   ├── netflix_dashboard.SemanticModel/  data model and DAX
+│   └── netflix_dashboard.pdf
+├── images/               Python charts and dashboard screenshots
 └── requirements.txt
 ```
 
@@ -75,6 +109,7 @@ netflix-content-analysis/
 
 1. `pip install -r requirements.txt`
 2. Run `notebooks/01_data_cleaning.ipynb`, then `notebooks/02_eda.ipynb`
+3. Open `dashboard/netflix_dashboard.pbip` in Power BI Desktop and click **Refresh**. The data paths point to `C:\Users\dell\Documents\netflix-content-analysis\data\processed\`; if your folder is different, update them in **Transform data → Advanced Editor**.
 
 ## Author
 
